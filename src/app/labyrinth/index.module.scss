@@ -1,0 +1,93 @@
+// 变量定义
+$background-dark: #000;
+$background-light: #fff;
+$primary-color: #4CAF50;
+$danger-color: #f44336;
+$border-color: #000;
+$border-width: 1px;
+$spacing: 20px;
+$container-size: 1000px;
+$dot-size: 6px;
+
+// 混合器
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin control-element {
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+// 主要样式
+.labyrinth {
+  @apply flex flex-row justify-center items-center gap-4 p-4 min-h-screen;
+
+  .labyrinth-container {
+    @apply relative w-full max-w-3xl aspect-square border border-gray-200 rounded-lg overflow-hidden;
+  }
+
+  .controls {
+    @apply flex gap-4 items-center;
+
+    .select-algorithm {
+      @apply px-4 py-2 border border-gray-300 rounded-lg bg-white;
+    }
+
+    .solution-toggle {
+      @apply px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors;
+    }
+  }
+}
+
+.algorithm-selector {
+  background: $background-light;
+  padding: $spacing;
+  border-radius: 8px;
+}
+
+.select-algorithm {
+  @include control-element;
+  border: $border-width solid #ccc;
+  width: 200px;
+
+  &:hover {
+    border-color: #666;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+  }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: $background-light;
+  padding: $spacing;
+  border-radius: 8px;
+}
+
+.solution-toggle {
+  @include control-element;
+  padding: 8px 16px;
+  background: $primary-color;
+  color: white;
+  border: none;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background: darken($primary-color, 5%);
+  }
+
+  &:active {
+    background: darken($primary-color, 10%);
+  }
+} 
