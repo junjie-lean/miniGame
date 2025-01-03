@@ -6,15 +6,32 @@ import { useRouter } from 'next/navigation'
 export default function Home() {
   const router = useRouter()
 
-  const gotoLabyrinth = () => {
-    router.push('/labyrinth')
+  const allGames = [
+    {
+      name: '迷宫',
+      path: '/labyrinth'
+    },
+    {
+      name: '数独',
+      path: '/sodoku'
+    },
+    {
+      name: '象棋',
+      path: '/chineseChess'
+    }
+  ]
+
+  const gotoGame = (path: string) => {
+    router.push(path)
   }
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <Button  type="primary" onClick={gotoLabyrinth}>
-          进入迷宫
-        </Button>
+    <div className="flex flex-col items-center justify-center p-8 pb-20 gap-[16px]  font-[family-name:var(--font-geist-sans)]">
+        {allGames.map((game) => (
+          <Button  type="primary" key={game.path} onClick={() => gotoGame(game.path)}>
+            {game.name}
+          </Button>
+        ))}
     </div>
   );
 }
