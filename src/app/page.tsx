@@ -18,6 +18,10 @@ export default function Home() {
     {
       name: '象棋',
       path: '/chineseChess'
+    },
+    {
+      name: '贪吃蛇',
+      path: '/eatSnack'
     }
   ]
 
